@@ -23,24 +23,22 @@ for (let i= 0; i < key.length; i++) {
 }
 // Declare an array of hours from 9 to 17 hours(24 hour- clock)
  var timeline =["9","10","11","12","13","14","15","16","17"];
- // Call the function that's declared below it
- updateColor();
-// This function goes through the timeline array and see if the current time is matched with any of the hour in timeline array, and change the background-color of the text area according to the time
- function updateColor() {
-     var currentTime = moment().format("H");
-     for( let index=0; index < timeline.length; index++) {
-         if (currentTime == parseInt(timeline[index])) {
-             // Add class to style color for the text area
-             $("." + timeline[index]).addClass("present");
-         } else if (currentTime < parseInt(timeline[index])) {
-            $("." + timeline[index]).addClass("future");
-         } else if (currentTime > parseInt(timeline[index])) {
-             $("." + timeline[index]).addClass("past");
-         }
-     }
- }
+ // Create variable that has the value of the current hour
+ var currentTime = moment().format("H");
 
-} )
+ // This loop goes through the timeline array and see if the current time is matched with any of the hour in timeline array, and change the background-color of the text area according to the time
+ for (let index=0; index < timeline.length; index++) {
+    if (currentTime == parseInt(timeline[index])) {
+     // Add class to style color for the text area depending on the current hour
+        $("." + timeline[index]).addClass("present");
+    } else if (currentTime < parseInt(timeline[index])) {
+        $("." + timeline[index]).addClass("future");
+    } else if (currentTime > parseInt(timeline[index])) {
+        $("." + timeline[index]).addClass("past");
+    }
+ }
+ 
+})
 
 
 
